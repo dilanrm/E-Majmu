@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+<form action="/media/image/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td>Select Pictures:</td>
+      <td>
+        <input name="files" type="file" size="50" accept="image/*" multiple />
+      </td>
+      <td><button type="submit">Upload</button></td>
+    </tr>
+  </table>
+</form>
+
+<script>
+  $(document).ready(function(e) {
+    $.ajax({
+      async: true,
+      url: "/majmu/api/getAll/",
+      crossDomain: true,
+      type: "GET",
+      dataType: "json",
+      success: function(response) {
+        console.log(response);
+      },
+      error: function(jXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+      }
+    }).done(function(response) {
+      console.log(response[0].name);
+    });
+  });
+</script>
+
+{% endblock %}

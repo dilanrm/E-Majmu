@@ -1,0 +1,16 @@
+{% extends 'main/header.html' %} {% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button
+    style="background-color: blue; color:#F4EB16; "
+    class="btn btn-outline-info"
+    type="submit"
+  >
+    Login
+  </button>
+</form>
+<a href="/majmu/api/getAll">coba</a>
+Tidak punya akun?
+<a href="/register" target="blank"><strong>Daftar sini</strong></a
+>! {% endblock %}
